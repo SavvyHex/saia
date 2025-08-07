@@ -59,18 +59,18 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl backdrop-blur-md bg-white/10 rounded-xl border border-white/20 shadow-xl p-6">
-        <h1 className="text-3xl text-white font-bold mb-6 text-center animate-fade-in">
+    <main className="min-h-screen bg-black bg-grid-green/[0.2] flex items-center justify-center p-4">
+      <div className="w-full max-w-4xl backdrop-blur-md bg-[#0d0d0d]/70 rounded-xl border border-green-400/20 shadow-2xl p-8">
+        <h1 className="text-4xl text-green-400 font-mono font-bold mb-6 text-center animate-fade-in">
           SAIA
         </h1>
 
-        <div className="h-[400px] overflow-y-auto px-4 py-2 rounded-lg bg-white/10 border border-white/10 mb-4 text-sm text-white space-y-2">
+        <div className="h-[600px] overflow-y-auto px-6 py-4 rounded-lg bg-[#000000]/60 border border-green-400/10 mb-6 text-sm text-green-300 space-y-4 font-mono">
           {messages.map((msg, i) => (
-            <div key={i} className="whitespace-pre-line">
+            <div key={i} className="whitespace-pre-line leading-relaxed">
               <span
-                className={`font-semibold ${
-                  msg.role === "user" ? "text-blue-400" : "text-green-400"
+                className={`font-bold ${
+                  msg.role === "user" ? "text-green-400" : "text-lime-300"
                 }`}
               >
                 {msg.role === "user" ? "You" : "SAIA"}:
@@ -80,15 +80,15 @@ export default function HomePage() {
           ))}
 
           {isTyping && (
-            <div className="text-green-400 italic animate-pulse">
+            <div className="text-lime-400 italic animate-pulse">
               SAIA is typing...
             </div>
           )}
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <input
-            className="flex-grow bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-300 focus:outline-none"
+            className="flex-grow bg-black/70 border border-green-400/30 rounded-lg px-4 py-3 text-green-200 placeholder-green-500 focus:outline-none font-mono"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
@@ -96,7 +96,7 @@ export default function HomePage() {
           />
           <button
             onClick={sendMessage}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition"
+            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-black font-bold px-5 py-3 rounded-lg transition font-mono"
           >
             <span>Send</span>
             <svg

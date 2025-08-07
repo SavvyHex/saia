@@ -49,3 +49,22 @@ body {
   background-color: #39ff14 !important;
   color: black;
 }
+
+.bg-grid-green {
+  background-image: radial-gradient(rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
