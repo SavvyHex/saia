@@ -49,7 +49,7 @@ export default function HomePage() {
 
   return (
     <main className="p-4 max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Venice Chat (OpenRouter)</h1>
+      <h1 className="text-2xl font-bold mb-4">SAIA</h1>
       <div className="border rounded p-4 h-[400px] overflow-y-auto bg-white shadow mb-4">
         {messages.map((msg, i) => (
           <div key={i} className="mb-2">
