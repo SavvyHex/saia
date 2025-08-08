@@ -11,7 +11,7 @@ type Message = {
   content: string;
 };
 
-export default function HomePage() {
+export default function ChatPage() {
   const systemPrompt: Message = {
     role: "assistant",
     content:
