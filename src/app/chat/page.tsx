@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 
 type Message = {
   role: "user" | "assistant";
@@ -67,15 +70,54 @@ export default function HomePage() {
 
         <div className="h-[600px] overflow-y-auto px-6 py-4 rounded-lg bg-[#000000]/60 border border-green-400/10 mb-6 text-sm text-green-300 space-y-4 font-mono">
           {messages.map((msg, i) => (
-            <div key={i} className="whitespace-pre-line leading-relaxed">
+            <div key={i} className="leading-relaxed">
               <span
                 className={`font-bold ${
                   msg.role === "user" ? "text-green-400" : "text-lime-300"
                 }`}
               >
                 {msg.role === "user" ? "You" : "SAIA"}:
-              </span>{" "}
-              {msg.content}
+              </span>
+              <div className="max-w-none">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeHighlight]}
+                  components={{
+                    h1: ({ node, ...props }) => (
+                      <h1 className="text-3xl font-bold mt-4 mb-2" {...props} />
+                    ),
+                    h2: ({ node, ...props }) => (
+                      <h2 className="text-2xl font-bold mt-3 mb-2" {...props} />
+                    ),
+                    h3: ({ node, ...props }) => (
+                      <h3
+                        className="text-xl font-semibold mt-2 mb-1"
+                        {...props}
+                      />
+                    ),
+                    code({ node, className, children, ...props }) {
+                      const isBlock =
+                        className && className.startsWith("language-");
+                      return isBlock ? (
+                        <pre className="bg-black text-green-400 p-3 rounded-lg overflow-x-auto">
+                          <code className={className} {...props}>
+                            {children}
+                          </code>
+                        </pre>
+                      ) : (
+                        <code
+                          className="bg-black text-green-400 px-1 py-0.5 rounded"
+                          {...props}
+                        >
+                          {children}
+                        </code>
+                      );
+                    },
+                  }}
+                >
+                  {msg.content}
+                </ReactMarkdown>
+              </div>
             </div>
           ))}
 
