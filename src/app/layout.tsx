@@ -7,6 +7,9 @@ const firaCode = Fira_Code({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata: Metadata = {
   title: "SAIA",
   description: "Saketh's Artificially Intelligent Assistant",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
