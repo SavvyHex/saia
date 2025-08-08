@@ -4,6 +4,7 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import PulsingBackground from "../components/pulsating-background";
 
 type Message = {
   role: "user" | "assistant";
@@ -63,7 +64,8 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-black bg-grid-green/[0.2] flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl backdrop-blur-md bg-[#0d0d0d]/70 rounded-xl border border-green-400/20 shadow-2xl p-8">
+      <PulsingBackground />
+      <div className="w-full max-w-4xl backdrop-blur-md bg-[#0d0d0d]/70 rounded-xl border border-green-400/20 shadow-2xl p-8 relative z-10">
         <h1 className="text-4xl text-green-400 font-mono font-bold mb-6 text-center animate-fade-in">
           SAIA
         </h1>

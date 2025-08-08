@@ -1,6 +1,6 @@
 "use client";
 
-import MatrixBackground from "./matrix-background";
+import MatrixBackground from "./components/matrix-background";
 
 export default function HomePage() {
   return (
