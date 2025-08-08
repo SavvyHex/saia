@@ -63,14 +63,12 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-black bg-grid-green/[0.2] flex items-center justify-center p-4">
+    <main className="h-screen flex flex-col bg-black bg-grid-green/[0.2] relative">
       <PulsingBackground />
-      <div className="w-full max-w-4xl backdrop-blur-md bg-[#0d0d0d]/70 rounded-xl border border-green-400/20 shadow-2xl p-8 relative z-10">
-        <h1 className="text-4xl text-green-400 font-mono font-bold mb-6 text-center animate-fade-in">
-          SAIA
-        </h1>
 
-        <div className="h-[600px] overflow-y-auto px-6 py-4 rounded-lg bg-[#000000]/60 border border-green-400/10 mb-6 text-sm text-green-300 space-y-4 font-mono">
+      <div className="flex flex-col w-full max-w-4xl mx-auto backdrop-blur-md bg-[#0d0d0d]/70 border-x border-green-400/20 shadow-2xl relative z-10 h-full">
+        {/* Messages container */}
+        <div className="chat-scroll flex-1 overflow-y-auto px-6 py-4 bg-[#000000]/60 border-b border-green-400/10 text-sm text-green-300 space-y-4 font-mono min-h-0">
           {messages.map((msg, i) => (
             <div key={i} className="leading-relaxed">
               <span
@@ -85,18 +83,6 @@ export default function HomePage() {
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeHighlight]}
                   components={{
-                    h1: ({ node, ...props }) => (
-                      <h1 className="text-3xl font-bold mt-4 mb-2" {...props} />
-                    ),
-                    h2: ({ node, ...props }) => (
-                      <h2 className="text-2xl font-bold mt-3 mb-2" {...props} />
-                    ),
-                    h3: ({ node, ...props }) => (
-                      <h3
-                        className="text-xl font-semibold mt-2 mb-1"
-                        {...props}
-                      />
-                    ),
                     code({ node, className, children, ...props }) {
                       const isBlock =
                         className && className.startsWith("language-");
@@ -122,7 +108,6 @@ export default function HomePage() {
               </div>
             </div>
           ))}
-
           {isTyping && (
             <div className="text-lime-400 italic animate-pulse">
               SAIA is typing...
@@ -130,7 +115,8 @@ export default function HomePage() {
           )}
         </div>
 
-        <div className="flex gap-3">
+        {/* Input area */}
+        <div className="flex gap-3 p-4 bg-[#0d0d0d]/80 border-t border-green-400/30">
           <input
             className="flex-grow bg-black/70 border border-green-400/30 rounded-lg px-4 py-3 text-green-200 placeholder-green-500 focus:outline-none font-mono"
             value={input}
